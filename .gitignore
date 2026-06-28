@@ -31,3 +31,9 @@ mlruns/
 .idea/
 .DS_Store
 Thumbs.db
+
+# VS Code history
+.history/
+
+# GitHub snapshots
+.snapshots/
