@@ -1,4 +1,4 @@
-# SD Worx HR Policy: Annual Leave — Spain
+# SmartPayroll HR Policy: Annual Leave — Spain
 
 **Document ID:** HR-POL-ES-001
 **Effective Date:** January 1, 2026

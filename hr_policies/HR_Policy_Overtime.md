@@ -1,13 +1,13 @@
-# SD Worx HR Policy: Overtime — General Guidelines
+# SmartPayroll HR Policy: Overtime — General Guidelines
 
 **Document ID:** HR-POL-GEN-002
 **Effective Date:** January 1, 2026
-**Scope:** All SD Worx locations
+**Scope:** All SmartPayroll locations
 
 ## 1. Definition
 
 Overtime is any working time beyond the employee's contractual
-hours per week. Standard working hours at SD Worx: 38 hours
+hours per week. Standard working hours at SmartPayroll: 38 hours
 per week (EU operations).
 
 ## 2. Authorisation
@@ -24,7 +24,7 @@ Overtime is compensated by one of two methods:
 
 ## 4. Impact on Attrition
 
-SD Worx data shows employees working regular overtime (more than
+SmartPayroll data shows employees working regular overtime (more than
 5 hours per week) have significantly higher probability of
 voluntary resignation. Managers should monitor overtime patterns
 and discuss workload proactively in 1:1 meetings.

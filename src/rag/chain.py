@@ -14,7 +14,7 @@ from openai import AzureOpenAI
 load_dotenv()
 logger = logging.getLogger(__name__)
 
-SYSTEM_PROMPT = """You are an expert HR policy specialist for SD Worx.
+SYSTEM_PROMPT = """You are an expert HR policy specialist for SmartPayroll.
 Answer questions about HR policies accurately and concisely.
 
 STRICT RULES:
@@ -183,7 +183,7 @@ if __name__ == "__main__":
     # Test ONE question to avoid rate limit
     test_questions = [
         "What is the annual leave entitlement in Spain?",
-        "How is overtime compensated at SD Worx?",
+        "How is overtime compensated at SmartPayroll?",
         "What is the notice period for 5 days of leave?",
     ]
 

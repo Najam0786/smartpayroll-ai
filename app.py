@@ -902,7 +902,7 @@ with tab4:
 
     EXAMPLES = [
         "What is the annual leave entitlement in Spain?",
-        "How is overtime compensated at SD Worx?",
+        "How is overtime compensated at SmartPayroll?",
         "What notice period is required for taking 5 days leave?",
         "What are the standard working hours in Germany?",
     ]
@@ -935,15 +935,15 @@ with tab4:
             </div>""", unsafe_allow_html=True)
 
             demo_map = {
-                "leave":    "Based on the SD Worx HR Policy (leave_policy_sdworx_ES), employees in Spain are entitled to **22 working days** of paid annual leave per calendar year, in addition to national and regional public holidays. Leave requests must be submitted at least **15 days in advance** for periods exceeding 5 consecutive days.\n\n*Note: Verify with your HR team before taking action.*",
-                "overtime": "Per the SD Worx Overtime Policy, overtime is compensated at **125% of the standard hourly rate** for the first 4 hours beyond the standard week, and **150%** thereafter. Employees may alternatively opt for compensatory time off at the same multiples.\n\n*Note: Verify with your HR team before taking action.*",
-                "notice":   "The SD Worx Leave Policy requires employees to provide a minimum of **15 calendar days' notice** for leave periods of 5 or more consecutive days. For shorter periods, **48 hours' notice** is required unless the absence is due to illness or emergency.\n\n*Note: Verify with your HR team before taking action.*",
-                "hours":    "Standard working hours in Germany under the SD Worx policy are **38.5 hours per week** across 5 days (Monday–Friday). Flexible working arrangements and remote work up to 2 days per week may be agreed with the line manager.\n\n*Note: Verify with your HR team before taking action.*",
+                "leave":    "Based on the SmartPayroll HR Policy (leave_policy_smartpayroll_ES), employees in Spain are entitled to **22 working days** of paid annual leave per calendar year, in addition to national and regional public holidays. Leave requests must be submitted at least **15 days in advance** for periods exceeding 5 consecutive days.\n\n*Note: Verify with your HR team before taking action.*",
+                "overtime": "Per the SmartPayroll Overtime Policy, overtime is compensated at **125% of the standard hourly rate** for the first 4 hours beyond the standard week, and **150%** thereafter. Employees may alternatively opt for compensatory time off at the same multiples.\n\n*Note: Verify with your HR team before taking action.*",
+                "notice":   "The SmartPayroll Leave Policy requires employees to provide a minimum of **15 calendar days' notice** for leave periods of 5 or more consecutive days. For shorter periods, **48 hours' notice** is required unless the absence is due to illness or emergency.\n\n*Note: Verify with your HR team before taking action.*",
+                "hours":    "Standard working hours in Germany under the SmartPayroll policy are **38.5 hours per week** across 5 days (Monday–Friday). Flexible working arrangements and remote work up to 2 days per week may be agreed with the line manager.\n\n*Note: Verify with your HR team before taking action.*",
             }
             q_lower = question.lower()
             answer = next((v for k, v in demo_map.items() if k in q_lower),
-                          "Based on the available SD Worx policy documents, I was unable to find a specific answer to your question. Please contact your HR team directly for clarification.\n\n*Note: Verify with your HR team before taking action.*")
-            sources = ["leave_policy_sdworx", "overtime_policy_sdworx"]
+                          "Based on the available SmartPayroll policy documents, I was unable to find a specific answer to your question. Please contact your HR team directly for clarification.\n\n*Note: Verify with your HR team before taking action.*")
+            sources = ["leave_policy_smartpayroll", "overtime_policy_smartpayroll"]
 
             st.markdown(f"""
             <div class="chat-bubble">
