@@ -12,15 +12,12 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 
-# Data files
+# Data files — raw source excluded, processed committed for Streamlit Cloud
 data/raw/*.csv
 data/raw/*.parquet
-data/processed/*.parquet
-data/synthetic/*.parquet
 
 # ML artifacts
 *.pkl
-*.joblib
 mlruns/
 
 # Jupyter
