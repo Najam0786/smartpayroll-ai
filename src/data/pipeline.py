@@ -6,8 +6,9 @@ Ingest -> Validate -> Clean -> Save
 """
 
 import logging
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -25,9 +26,9 @@ def run_pipeline() -> pd.DataFrame:
     Returns:
         Cleaned DataFrame (Silver layer)
     """
+    from src.data.clean import clean_hr_data
     from src.data.ingest import load_hr_data
     from src.data.validate import validate_hr_data
-    from src.data.clean import clean_hr_data
 
     logger.info("=" * 55)
     logger.info("SMARTPAYROLL DATA PIPELINE STARTING")

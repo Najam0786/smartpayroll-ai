@@ -4,11 +4,12 @@ RAG chain: search + generate.
 Answers HR policy questions using retrieved documents.
 """
 
+import logging
 import os
 import time
-import logging
-from openai import AzureOpenAI
+
 from dotenv import load_dotenv
+from openai import AzureOpenAI
 
 load_dotenv()
 logger = logging.getLogger(__name__)

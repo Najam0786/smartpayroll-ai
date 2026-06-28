@@ -5,6 +5,7 @@ Checks the HR dataset meets expected schema and quality rules.
 """
 
 import logging
+
 import pandas as pd
 
 logger = logging.getLogger(__name__)
@@ -105,7 +106,7 @@ if __name__ == "__main__":
     results = validate_hr_data(df)
 
     print(f"\n{'='*50}")
-    print(f"VALIDATION RESULTS")
+    print("VALIDATION RESULTS")
     print(f"{'='*50}")
     for check_name, details in results["checks"].items():
         status = "✅ PASS" if details["passed"] else "❌ FAIL"

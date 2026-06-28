@@ -4,9 +4,10 @@ Document processing pipeline for HR policy RAG.
 Chunks documents, generates embeddings, stores in Azure AI Search.
 """
 
-import os
 import logging
+import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 
@@ -158,10 +159,10 @@ if __name__ == "__main__":
     chunks = process_policy_documents()
 
     print(f"\n{'='*50}")
-    print(f"DOCUMENT PROCESSING COMPLETE")
+    print("DOCUMENT PROCESSING COMPLETE")
     print(f"{'='*50}")
     print(f"Total chunks: {len(chunks)}")
-    print(f"\nSample chunk:")
+    print("\nSample chunk:")
     print(f"  ID:      {chunks[0]['id']}")
     print(f"  Source:  {chunks[0]['source']}")
     print(f"  Country: {chunks[0]['country']}")

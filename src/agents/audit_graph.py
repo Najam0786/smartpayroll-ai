@@ -18,10 +18,10 @@ Patterns demonstrated:
 
 import json
 import logging
-from typing import TypedDict, Annotated, Literal
 import operator
+from typing import Annotated, Literal, TypedDict
 
-from langgraph.graph import StateGraph, START, END
+from langgraph.graph import END, START, StateGraph
 
 logger = logging.getLogger(__name__)
 
@@ -165,11 +165,11 @@ def hitl_node(state: AuditState) -> dict:
     print(f"Employee ID:  {state['employee_id']}")
     print(f"Risk Level:   {risk.get('risk_level')}")
     print(f"Department:   {details.get('department')}")
-    print(f"Risk Factors:")
+    print("Risk Factors:")
     for factor in risk.get("risk_factors", []):
         print(f"  → {factor}")
-    print(f"\nIn production: notification sent to HR manager.")
-    print(f"Simulating approval for demo purposes...")
+    print("\nIn production: notification sent to HR manager.")
+    print("Simulating approval for demo purposes...")
     print("=" * 60)
 
     return {

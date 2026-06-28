@@ -4,9 +4,8 @@ Unit tests for the data pipeline.
 Run with: pytest tests/unit/test_data_pipeline.py -v
 """
 
-import pytest
 import pandas as pd
-import numpy as np
+import pytest
 
 
 # ─── Fixtures ─────────────────────────────────────────────────
@@ -68,9 +67,9 @@ class TestValidation:
         from src.data.validate import validate_hr_data
         results = validate_hr_data(sample_raw_df)
         # These checks should always pass on valid data
-        assert results["checks"]["nulls"]["passed"] == True
-        assert results["checks"]["attrition_values"]["passed"] == True
-        assert results["checks"]["age_range"]["passed"] == True
+        assert results["checks"]["nulls"]["passed"] is True
+        assert results["checks"]["attrition_values"]["passed"] is True
+        assert results["checks"]["age_range"]["passed"] is True
 
     def test_row_count_check(self, sample_raw_df):
         from src.data.validate import validate_hr_data
@@ -187,26 +186,20 @@ class TestFeatureEngineering:
         assert len(obj_cols) == 0
 
     def test_select_features_separates_target(self, clean_df):
-        from src.features.feature_engineering import (
-            encode_categorical, select_features
-        )
+        from src.features.feature_engineering import encode_categorical, select_features
         encoded = encode_categorical(clean_df)
         X, y = select_features(encoded)
         assert "Attrition" not in X.columns
         assert len(y) == len(X)
 
     def test_select_features_target_is_binary(self, clean_df):
-        from src.features.feature_engineering import (
-            encode_categorical, select_features
-        )
+        from src.features.feature_engineering import encode_categorical, select_features
         encoded = encode_categorical(clean_df)
         X, y = select_features(encoded)
         assert set(y.unique()).issubset({0, 1})
 
     def test_split_preserves_total_rows(self, clean_df):
-        from src.features.feature_engineering import (
-            encode_categorical, select_features, split_data
-        )
+        from src.features.feature_engineering import encode_categorical, select_features, split_data
         encoded = encode_categorical(clean_df)
         X, y = select_features(encoded)
         # Use larger test_size for small 5-row sample
@@ -230,6 +223,7 @@ class TestAgentTools:
 
     def test_get_employee_details_found(self):
         import json
+
         from src.agents.tools.hr_tools import get_employee_details
         result = json.loads(get_employee_details(1))
         assert result["status"] == "found"
@@ -239,12 +233,14 @@ class TestAgentTools:
 
     def test_get_employee_details_not_found(self):
         import json
+
         from src.agents.tools.hr_tools import get_employee_details
         result = json.loads(get_employee_details(9999))
         assert result["status"] == "not_found"
 
     def test_get_employee_details_has_all_fields(self):
         import json
+
         from src.agents.tools.hr_tools import get_employee_details
         result = json.loads(get_employee_details(1))
         required_fields = [
@@ -256,6 +252,7 @@ class TestAgentTools:
 
     def test_get_attrition_risk_returns_level(self):
         import json
+
         from src.agents.tools.hr_tools import get_attrition_risk
         result = json.loads(get_attrition_risk(1))
         assert result["status"] == "success"
@@ -264,6 +261,7 @@ class TestAgentTools:
 
     def test_get_attrition_risk_has_recommendation(self):
         import json
+
         from src.agents.tools.hr_tools import get_attrition_risk
         result = json.loads(get_attrition_risk(1))
         assert "recommendation" in result
@@ -271,6 +269,7 @@ class TestAgentTools:
 
     def test_get_department_stats_sales(self):
         import json
+
         from src.agents.tools.hr_tools import get_department_stats
         result = json.loads(get_department_stats("Sales"))
         assert result["status"] == "found"
@@ -279,6 +278,7 @@ class TestAgentTools:
 
     def test_get_department_stats_invalid(self):
         import json
+
         from src.agents.tools.hr_tools import get_department_stats
         result = json.loads(get_department_stats("InvalidDept"))
         assert result["status"] == "not_found"
@@ -286,6 +286,7 @@ class TestAgentTools:
     def test_high_risk_employee_score(self):
         """Employee 7 is known HIGH risk from our EDA."""
         import json
+
         from src.agents.tools.hr_tools import get_attrition_risk
         result = json.loads(get_attrition_risk(7))
         assert result["risk_level"] == "HIGH"

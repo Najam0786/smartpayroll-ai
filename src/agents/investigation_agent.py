@@ -5,9 +5,9 @@ Uses tools to investigate employee attrition risk.
 Demonstrates agentic AI pattern: tools + reasoning + action.
 """
 
-import os
 import json
 import logging
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,9 +26,9 @@ def investigate_employee(employee_id: int) -> dict:
         dict with complete investigation results
     """
     from src.agents.tools.hr_tools import (
-        get_employee_details,
         get_attrition_risk,
         get_department_stats,
+        get_employee_details,
     )
 
     print(f"\n{'='*60}")
@@ -62,11 +62,11 @@ def investigate_employee(employee_id: int) -> dict:
     print(f"  Risk Score: {risk['risk_score']}/10")
 
     if risk["risk_factors"]:
-        print(f"  Risk Factors:")
+        print("  Risk Factors:")
         for factor in risk["risk_factors"]:
             print(f"    → {factor}")
     else:
-        print(f"  No major risk factors identified")
+        print("  No major risk factors identified")
 
     print(f"  Recommendation: {risk['recommendation']}")
 
@@ -150,7 +150,6 @@ def get_high_risk_employees(top_n: int = 5) -> list[dict]:
         List of high risk employee profiles
     """
     from src.agents.tools.hr_tools import (
-        get_employee_details,
         get_attrition_risk,
     )
 

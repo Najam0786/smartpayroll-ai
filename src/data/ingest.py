@@ -6,8 +6,9 @@ In production: loads from Azure Blob Storage.
 """
 
 import logging
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 # Set up logging for this module
 logger = logging.getLogger(__name__)
@@ -54,12 +55,12 @@ if __name__ == "__main__":
     df = load_hr_data()
 
     print(f"\n{'='*50}")
-    print(f"IBM HR Analytics Dataset")
+    print("IBM HR Analytics Dataset")
     print(f"{'='*50}")
     print(f"Rows:    {len(df):,}")
     print(f"Columns: {len(df.columns)}")
     print(f"{'='*50}")
-    print(f"\nFirst 3 rows:")
+    print("\nFirst 3 rows:")
     print(df.head(3))
-    print(f"\nAttrition breakdown:")
+    print("\nAttrition breakdown:")
     print(df['Attrition'].value_counts())

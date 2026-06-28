@@ -5,9 +5,10 @@ Exposes ML model and investigation agent as REST endpoints.
 """
 
 import logging
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from contextlib import asynccontextmanager
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -88,9 +89,10 @@ async def get_attrition_risk(request: AttritionRequest):
     risk factors, and recommended action.
     """
     import json
+
     from src.agents.tools.hr_tools import (
-        get_employee_details,
         get_attrition_risk,
+        get_employee_details,
     )
 
     logger.info(f"Attrition risk request for employee {request.employee_id}")
@@ -152,6 +154,7 @@ async def investigate_employee(request: InvestigationRequest):
 async def get_employee(employee_id: int):
     """Get employee details by ID."""
     import json
+
     from src.agents.tools.hr_tools import get_employee_details
 
     if employee_id < 1 or employee_id > 1470:

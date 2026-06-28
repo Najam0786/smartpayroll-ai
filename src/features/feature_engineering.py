@@ -5,10 +5,10 @@ Creates ML-ready features from the Silver layer data.
 """
 
 import logging
+
 import pandas as pd
-import numpy as np
-from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 
 logger = logging.getLogger(__name__)
 
@@ -103,8 +103,8 @@ def split_data(
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
-    from src.data.ingest import load_hr_data
     from src.data.clean import clean_hr_data
+    from src.data.ingest import load_hr_data
 
     # Load and clean data
     df = clean_hr_data(load_hr_data())
@@ -121,7 +121,7 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = split_data(X, y)
 
     print(f"\n{'='*50}")
-    print(f"FEATURE ENGINEERING COMPLETE")
+    print("FEATURE ENGINEERING COMPLETE")
     print(f"{'='*50}")
     print(f"Total features: {X.shape[1]}")
     print(f"Train samples:  {len(X_train):,}")

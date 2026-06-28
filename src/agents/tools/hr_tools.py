@@ -6,6 +6,7 @@ Each function is a tool the agent can call.
 
 import json
 import logging
+
 import pandas as pd
 
 logger = logging.getLogger(__name__)
@@ -18,8 +19,8 @@ def _get_hr_data() -> pd.DataFrame:
     """Load HR dataset (cached after first load)."""
     global _HR_DATA
     if _HR_DATA is None:
-        from src.data.ingest import load_hr_data
         from src.data.clean import clean_hr_data
+        from src.data.ingest import load_hr_data
         _HR_DATA = clean_hr_data(load_hr_data())
     return _HR_DATA
 
@@ -170,11 +171,13 @@ def search_hr_policy(query: str) -> str:
     Returns:
         Most relevant policy text found
     """
-    from src.rag.document_processor import process_policy_documents
-    from src.rag.chain import retrieve_relevant_chunks
-    from openai import AzureOpenAI
     import os
+
     from dotenv import load_dotenv
+    from openai import AzureOpenAI
+
+    from src.rag.chain import retrieve_relevant_chunks
+    from src.rag.document_processor import process_policy_documents
     load_dotenv()
 
     client = AzureOpenAI(

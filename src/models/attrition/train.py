@@ -6,22 +6,20 @@ Tracks all experiments with MLflow.
 """
 
 import logging
+
 import mlflow
 import mlflow.sklearn
-import pandas as pd
-import numpy as np
-from xgboost import XGBClassifier
-from sklearn.linear_model import LogisticRegression
 from imblearn.over_sampling import SMOTE
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
-    roc_auc_score,
+    accuracy_score,
+    classification_report,
     f1_score,
     precision_score,
     recall_score,
-    accuracy_score,
-    confusion_matrix,
-    classification_report
+    roc_auc_score,
 )
+from xgboost import XGBClassifier
 
 logger = logging.getLogger(__name__)
 
@@ -131,11 +129,9 @@ def train_xgboost(X_train, y_train, X_test, y_test) -> dict:
 
 def run_training():
     """Run full training pipeline."""
-    from src.data.ingest import load_hr_data
     from src.data.clean import clean_hr_data
-    from src.features.feature_engineering import (
-        encode_categorical, select_features, split_data
-    )
+    from src.data.ingest import load_hr_data
+    from src.features.feature_engineering import encode_categorical, select_features, split_data
 
     mlflow.set_experiment("smartpayroll-attrition")
 

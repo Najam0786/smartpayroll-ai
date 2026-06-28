@@ -17,8 +17,8 @@ Anomaly types injected (~2% of records):
 5. LARGE_DEVIATION: >25% change from previous month
 """
 
-import random
 import logging
+import random
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -292,12 +292,12 @@ if __name__ == "__main__":
     print(f"Pay periods:    {payroll_df['pay_period'].nunique()}")
     print(f"Anomalies:      {payroll_df['is_anomaly'].sum():,} "
           f"({payroll_df['is_anomaly'].mean():.1%})")
-    print(f"\nAnomaly types:")
+    print("\nAnomaly types:")
     print(
         payroll_df[payroll_df["is_anomaly"]]["anomaly_type"]
         .value_counts()
         .to_string()
     )
-    print(f"\nSample record:")
+    print("\nSample record:")
     print(payroll_df.head(1).to_string())
     print(f"\nSaved to: {output_path}")

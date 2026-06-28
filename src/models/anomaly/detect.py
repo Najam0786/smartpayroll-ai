@@ -21,12 +21,11 @@ WHY TWO LAYERS?
 """
 
 import logging
-import joblib
-from pathlib import Path
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Literal
 
-import numpy as np
+import joblib
 import pandas as pd
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
@@ -214,7 +213,7 @@ def train_isolation_forest(
         precision = tp / (tp + fp) if (tp + fp) > 0 else 0
         recall = tp / (tp + fn) if (tp + fn) > 0 else 0
 
-        logger.info(f"Isolation Forest evaluation:")
+        logger.info("Isolation Forest evaluation:")
         logger.info(f"  Precision: {precision:.3f}")
         logger.info(f"  Recall:    {recall:.3f}")
         logger.info(f"  True positives: {tp}/{y_true.sum()}")
@@ -328,8 +327,8 @@ if __name__ == "__main__":
     actual = merged["is_anomaly"].sum()
     detected = merged["requires_review"].sum()
     tp = (
-        (merged["is_anomaly"] == True) &
-        (merged["requires_review"] == True)
+        merged["is_anomaly"] &
+        merged["requires_review"]
     ).sum()
 
     print(f"\nActual anomalies:   {actual}")
